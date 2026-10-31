@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS "TestTable" (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL
+);
+
+INSERT INTO "TestTable" (name)
+VALUES ('Test row')
+ON CONFLICT DO NOTHING;
