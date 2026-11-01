@@ -32,7 +32,7 @@ services:
       DB_PASSWORD: ${POSTGRES_PASSWORD:-mySecurePassword123}
       DB_NAME: ${POSTGRES_DB:-myapp_db}
       CORS_ORIGIN: http://localhost:3000
-    command: sh -c "npm run migrate && node --watch app.js"
+    command: sh -c "npm ci && npm run migrate && npx nodemon --legacy-watch app.js"
     volumes:
       - ./backend:/app
       - backend_node_modules:/app/node_modules
@@ -46,7 +46,7 @@ services:
     restart: unless-stopped
     environment:
       VITE_API_PROXY_TARGET: http://backend:4000
-    command: npm run dev -- --host 0.0.0.0
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
     ports:
       - "3000:3000"
     volumes:
