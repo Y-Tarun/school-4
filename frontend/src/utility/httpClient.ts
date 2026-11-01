@@ -49,7 +49,7 @@ class HttpClient {
     return response.data;
   }
 }
-const httpClient = new HttpClient('http://localhost:4000/api', 5000, {
+const httpClient = new HttpClient('/api', 5000, {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
 });

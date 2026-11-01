@@ -3,10 +3,10 @@ const cors = require("cors");
 const pool = require('./db');
 
 const app = express();
-const port = 4000;
+const port = Number(process.env.PORT || 4000);
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: process.env.CORS_ORIGIN || "http://localhost:3000",
 }));
 
 app.use(express.json());
@@ -32,5 +32,5 @@ app.get("/test-db", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Backend listening on port ${port}`);
 });
