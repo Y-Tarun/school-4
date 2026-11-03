@@ -1,0 +1,33 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+CREATE TABLE IF NOT EXISTS students (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  application_number TEXT NOT NULL UNIQUE,
+  date_of_admission DATE NOT NULL,
+  first_name TEXT NOT NULL,
+  surname TEXT NOT NULL,
+  name_used_at_home TEXT NOT NULL,
+  gender TEXT NOT NULL,
+  date_of_birth DATE NOT NULL,
+  language_spoken_at_home TEXT NOT NULL,
+  address TEXT NOT NULL,
+  previous_schooling BOOLEAN NOT NULL DEFAULT FALSE,
+  previous_schooling_details TEXT NOT NULL,
+  toilet_trained BOOLEAN NOT NULL DEFAULT FALSE,
+  brothers_count INTEGER NOT NULL DEFAULT 0 CHECK (brothers_count >= 0),
+  sisters_count INTEGER NOT NULL DEFAULT 0 CHECK (sisters_count >= 0),
+  status TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  father_name TEXT NOT NULL,
+  father_occupation TEXT NOT NULL,
+  father_qualification TEXT NOT NULL,
+  father_contact_number TEXT NOT NULL,
+  mother_name TEXT NOT NULL,
+  mother_occupation TEXT NOT NULL,
+  mother_qualification TEXT NOT NULL,
+  mother_contact_number TEXT NOT NULL,
+  contact_number TEXT NOT NULL,
+  photolocator TEXT,
+  is_deleted BOOLEAN NOT NULL DEFAULT FALSE
+);

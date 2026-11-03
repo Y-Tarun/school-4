@@ -1,5 +1,23 @@
 # Tarun School
 
+The current system design and implementation boundaries are documented in
+[docs/architecture.md](docs/architecture.md).
+
+## Initial admin account
+
+After PostgreSQL is available and migrations have run, create or update the
+development administrator from the `backend` directory:
+
+```powershell
+$env:ADMIN_EMAIL = "admin@school.local"
+$env:ADMIN_PASSWORD = "change-this-password"
+npm run createAdmin
+```
+
+The authentication foundation uses short-lived access tokens with refresh
+tokens. Passwords are stored as scrypt hashes, and the admin reset endpoint
+revokes the target user's active sessions.
+
 ## Development with Docker
 
 Copy the example environment file before starting the stack:
