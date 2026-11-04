@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require("cors");
 const pool = require('./db');
+const studentRoutes = require('./routes/studentRoutes');
 
 const app = express();
 const port = Number(process.env.PORT || 4000);
@@ -10,6 +11,9 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+// Routes
+app.use('/api/students', studentRoutes);
 
 app.get("/api/hello", (req, res) => {
   res.json({
